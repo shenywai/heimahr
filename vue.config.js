@@ -36,7 +36,12 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/api': {
+        target: 'https://heimahr.itheima.net/'
+      }
+    }
+    // before: require('./mock/mock-server.js') 基础模板做的模拟数据 拦截请求
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
@@ -87,7 +92,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
