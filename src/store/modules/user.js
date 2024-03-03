@@ -1,4 +1,4 @@
-import {getToken, setToken, removeToken} from '@/utils/auth'
+import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const state = {
   token: getToken() // 从缓存中读取初始值
@@ -17,14 +17,13 @@ const mutations = {
   }
 }
 const actions = {
-  // 登录
   login(context, data) {
-    // todo 调用登录接口
-    // 返回一个token
+    // todo: 调用登录接口
+    // 返回一个token 123456
     context.commit('setToken', '123456')
   },
-  // 退出
   logout() {
+    state.token = null
     removeToken()
   }
 }

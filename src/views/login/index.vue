@@ -81,7 +81,7 @@ export default {
       this.$refs.form.validate((isOk) => {
         if (isOk) {
           // 当点击登录的时候调用Vuex中的方法,进行传递必要参数
-          this.$store.dispatch('/user/login', this.loginForm)
+          this.$store.dispatch('user/login', this.loginForm)
         }
       })
     }
