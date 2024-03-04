@@ -1,13 +1,13 @@
 <template>
   <div class="login-container">
-    <div class="logo" />
+    <div class="logo"/>
     <div class="form">
       <h1>登录</h1>
       <el-card shadow="never" class="login-card">
         <!--登录表单-->
         <el-form ref="form" :rules="loginRules" :model="loginForm">
           <el-form-item prop="mobile">
-            <el-input v-model="loginForm.mobile" placeholder="请输入手机号" />
+            <el-input v-model="loginForm.mobile" placeholder="请输入手机号"/>
           </el-form-item>
           <el-form-item prop="password">
             <el-input
@@ -28,6 +28,8 @@
   </div>
 </template>
 <script>
+
+import request from '@/utils/request'
 
 export default {
   name: 'Login',
