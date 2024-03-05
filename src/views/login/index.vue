@@ -1,13 +1,13 @@
 <template>
   <div class="login-container">
-    <div class="logo"/>
+    <div class="logo" />
     <div class="form">
       <h1>登录</h1>
       <el-card shadow="never" class="login-card">
         <!--登录表单-->
         <el-form ref="form" :rules="loginRules" :model="loginForm">
           <el-form-item prop="mobile">
-            <el-input v-model="loginForm.mobile" placeholder="请输入手机号"/>
+            <el-input v-model="loginForm.mobile" placeholder="请输入手机号" />
           </el-form-item>
           <el-form-item prop="password">
             <el-input
@@ -34,9 +34,9 @@ export default {
   data() {
     return {
       loginForm: {
-        mobile: '',
-        password: '',
-        isAgree: false
+        mobile: process.env.NODE_ENV === 'development' ? '13800000003' : '',
+        password: process.env.NODE_ENV === 'development' ? '123456' : '',
+        isAgree: process.env.NODE_ENV === 'development'
       },
       loginRules: {
         mobile: [
@@ -78,10 +78,11 @@ export default {
   },
   methods: {
     login() {
-      this.$refs.form.validate((isOk) => {
+      this.$refs.form.validate(async(isOk) => {
         if (isOk) {
           // 当点击登录的时候调用Vuex中的方法,进行传递必要参数
-          this.$store.dispatch('user/login', this.loginForm)
+          await this.$store.dispatch('user/login', this.loginForm)
+          this.$router.push('/')
         }
       })
     }

@@ -1,9 +1,6 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
-    <!-- svg-ioc组件  -->
-    <svg-icon icon-class="dashboard"/>
-    <svg-icon icon-class="skill"/>
   </div>
 </template>
 
